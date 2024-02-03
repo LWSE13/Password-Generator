@@ -25,17 +25,41 @@ function generatePassword(){
  var uppercasePref = confirm("Click OK for uppercase characters to be included in your password or click cancel to move on to the next section")
  var numberPref = confirm("Click OK for numbers to be included in your password or click cancel to move on to the next section")
  var specialPref = confirm("Finally, would you like to include special characters within your password?")
+ if (lowercasePref || uppercasePref || numberPref || specialPref) {
 
- var passwordLength = prompt("How many characters would you like to include within your password?")
+  var passwordChars = ""
+  if (lowercasePref) {
+    passwordChars += lowercase
+  }
+  if (uppercasePref) {
+    passwordChars += uppercase
+  }
+  if (numberPref) {
+    passwordChars += numbers
+  }
+  if (specialPref) {
+    passwordChars += special
+  }
 
+
+  console.log(passwordChars)
+  var passwordLength = prompt("How many characters would you like to include within your password?")
  if (isNaN(passwordLength)) {
   alert("please enter a valid number")
- } else {
- }
+  generatePassword()
+ } else if (passwordLength<8){
+ alert("Please keep your password between 8-128 characters")
+ generatePassword()
+  } else if(passwordLength>128) {
+  alert("Please keep your password between 8-128 characters")
+  generatePassword()
+} else {
+
 }
 
-
-
-function checkPasswordLength() {
+ } else {
+  alert("please select at least 1 character type")
   
+ }
+
 }
