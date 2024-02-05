@@ -15,6 +15,7 @@ function writePassword() { //the function responsible for password generation
 generateBtn.addEventListener("click", writePassword); //when the button is clicked, the writePassword function is called
 
 function generatePassword(){
+  var passwordFin =""
  var lowercase = "abcdefghijklmnopqrstuvwxyz"; //variable containing a string of lowercase letters
  var uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"; //variable containing a string of uppercase letters
  var numbers = "0123456789"; //variable containing a string of numbers
@@ -55,7 +56,12 @@ function generatePassword(){
   generatePassword()
 } else {
 
+  for (var i = 0; i < passwordLength; i++) {
+  passwordFin += passwordChars.charAt(Math.floor(Math.random() * passwordChars.length));
 }
+console.log(passwordFin)
+}
+return passwordFin
 
  } else {
   alert("please select at least 1 character type")
