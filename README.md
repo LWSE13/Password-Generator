@@ -5,6 +5,7 @@ A password generator that asks you your password preferences and preferred lengt
 
 I wanted to create this as a way to improve upon my knowledge of javascript arrays and for loops. i also used the math.floor/math.random function for the first time. In the future I would like to add a space to store the recent passwords generated and I would like to add some functions within the generate password function that allows the user to return to a certain point within the generation process if a prompt is failed.
 
+Visit the website here: https://lwse13.github.io/Password-Generator/
 ![prompt-Preview](assets/images/ss-1.png) ![prompt-Preview2](assets/images/ss-2.png)
 ## Installation
 N/A
