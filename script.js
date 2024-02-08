@@ -15,57 +15,63 @@ function writePassword() { //the function responsible for password generation
 generateBtn.addEventListener("click", writePassword); //when the button is clicked, the writePassword function is called
 
 function generatePassword(){
-  var passwordFin =""
+ var passwordFin ="" //creates an empty string that will eventually contain the characters of our finished password
  var lowercase = "abcdefghijklmnopqrstuvwxyz"; //variable containing a string of lowercase letters
  var uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"; //variable containing a string of uppercase letters
  var numbers = "0123456789"; //variable containing a string of numbers
  var special = "!£$%^&*()_+=-{}[]:;@'~#<>,.|?/"; //variable containing a string of special characters
 
  //the following code opens a box at the top of the webpage that asks the user if they would like to include a certain set of characters in their password
- var lowercasePref = confirm("Click OK for lowercase characters to be included in your password or click cancel to move on to the next section")
- var uppercasePref = confirm("Click OK for uppercase characters to be included in your password or click cancel to move on to the next section")
- var numberPref = confirm("Click OK for numbers to be included in your password or click cancel to move on to the next section")
- var specialPref = confirm("Finally, would you like to include special characters within your password?")
- if (lowercasePref || uppercasePref || numberPref || specialPref) {
+ var lowercaseChars = confirm("Click OK for lowercase characters to be included in your password or click cancel to move on to the next section")
+ var uppercaseChars = confirm("Click OK for uppercase characters to be included in your password or click cancel to move on to the next section")
+ var numberChars = confirm("Click OK for numbers to be included in your password or click cancel to move on to the next section")
+ var specialChars = confirm("Finally, would you like to include special characters within your password?")
+ if (lowercaseChars || uppercaseChars || numberChars || specialChars) {
 
-  var passwordChars = ""
-  if (lowercasePref) {
-    passwordChars += lowercase
-  }
-  if (uppercasePref) {
-    passwordChars += uppercase
-  }
-  if (numberPref) {
-    passwordChars += numbers
-  }
-  if (specialPref) {
-    passwordChars += special
+    //The following checks what character types the user has selected and assigns them to the passwordChars variable
+    var passwordChars = ""
+   if (lowercaseChars) {
+      passwordChars += lowercase
+    }
+    if (uppercaseChars) {
+      passwordChars += uppercase
+    }
+    if (numberChars) {
+      passwordChars += numbers
+    }
+    if (specialChars) {
+      passwordChars += special
   }
 
+    //The following code asks the user how many characters they would like their password to be. 
+   //If the user enters a number less than 8 or greater than 128, they are prompted to enter a number between 8-128
+    //If the user enters a non-number, they are prompted to enter a valid number
+   var passwordLength = prompt("How many characters would you like to include within your password?")
+    if (isNaN(passwordLength)) {
+      alert("please enter a valid number")
+      generatePassword()
+    } else if (passwordLength<8){
+      alert("Please keep your password between 8-128 characters")
+      generatePassword()
+    } else if(passwordLength>128) {
+      alert("Please keep your password between 8-128 characters")
+      generatePassword()
+    } else {
 
-  console.log(passwordChars)
-  var passwordLength = prompt("How many characters would you like to include within your password?")
- if (isNaN(passwordLength)) {
-  alert("please enter a valid number")
-  generatePassword()
- } else if (passwordLength<8){
- alert("Please keep your password between 8-128 characters")
- generatePassword()
-  } else if(passwordLength>128) {
-  alert("Please keep your password between 8-128 characters")
-  generatePassword()
-} else {
+      // the following for loop declares a variable i that starts at 0, and as long as i is less than the passwordLength chosen by the user, 
+      //i will increase by 1. 
+      //it then assigns random characters within the 
+      //math.floor rounds the number down to the nearest whole number
+     //math.random generates a random number between 0 and 1
+      for (var i = 0; i < passwordLength; i++) {
+      passwordFin += passwordChars.charAt(Math.floor(Math.random() * passwordChars.length));
+      }
 
-  for (var i = 0; i < passwordLength; i++) {
-  passwordFin += passwordChars.charAt(Math.floor(Math.random() * passwordChars.length));
-}
-console.log(passwordFin)
-}
-return passwordFin
+    }
+    return passwordFin
 
  } else {
-  alert("please select at least 1 character type")
-  
+    alert("please select at least 1 character type")
  }
 
 }
